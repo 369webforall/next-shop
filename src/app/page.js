@@ -1,9 +1,25 @@
-import React from 'react'
+import React from 'react';
+import ListProducts from '@/components/products/ListProducts';
+async function getData() {
+  const res = await fetch('http://localhost:3000/api/products');
+  // The return value is *not* serialized
+  // You can return Date, Map, Set, etc.
 
-const Home = () => {
-  return (
-    <div>Home</div>
-  )
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error('Failed to fetch data');
+  }
+
+  return res.json();
 }
 
-export default Home
+const Home = async () => {
+  const products = await getData();
+  return (
+    <div>
+      <ListProducts products={products} />
+    </div>
+  );
+};
+
+export default Home;

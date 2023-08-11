@@ -1,6 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import Search from "./Search";
+
 
 const Header = () => {
   return (
@@ -22,7 +23,7 @@ const Header = () => {
 
           <div className="flex items-center space-x-2 ml-auto">
             <Link
-              to="/cart"
+              href="/cart"
               className="px-3 py-2 inline-block text-center text-gray-700 bg-white shadow-sm border border-gray-200 rounded-md hover:bg-gray-100 hover:border-gray-300"
             >
               <i className="text-gray-400 w-5 fa fa-shopping-cart"></i>
@@ -31,13 +32,13 @@ const Header = () => {
               </span>
             </Link>
             <Link
-              to="/login"
+              href="/login"
               className="px-3 py-2 inline-block text-center text-gray-700 bg-white shadow-sm border border-gray-200 rounded-md hover:bg-gray-100 hover:border-gray-300"
             >
               <i className="text-gray-400 w-5 fa fa-user"></i>
               <span className="hidden lg:inline ml-1">Sign in</span>
             </Link>
-            <Link to="/me">
+            <Link href="/me">
               <div className="flex items-center mb-4 space-x-3 mt-4 cursor-pointer">
                 <img className="w-10 h-10 rounded-full" src={"logo192.png"} />
                 <div className="space-y-1 font-medium">

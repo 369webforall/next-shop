@@ -1,13 +1,12 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import StarRatings from "react-star-ratings";
-import Filters from "../layout/Filters";
-import Header from "../layout/Header";
+import React from 'react';
+import Link from 'next/link';
+import StarRatings from 'react-star-ratings';
+import Filters from '../layout/Filters';
 
-const ListProducts = () => {
+import Image from 'next/image';
+const ListProducts = ({ products }) => {
   return (
     <>
-      <Header />
       <section className="py-12">
         <div className="container max-w-screen-xl mx-auto px-4">
           <div className="flex flex-col md:flex-row -mx-4">
@@ -19,23 +18,24 @@ const ListProducts = () => {
                   <div className="md:w-1/4 flex p-3">
                     <div
                       style={{
-                        width: "80%",
-                        height: "70%",
-                        position: "relative",
+                        width: '80%',
+                        height: '70%',
+                        position: 'relative',
                       }}
                     >
-                      <img
-                        src={"/logo192.png"}
+                      <Image
+                        src={'/logo192.png'}
                         alt="product anme"
                         height="240"
                         width="240"
+                        className="object-cover"
                       />
                     </div>
                   </div>
                   <div className="md:w-2/4">
                     <div className="p-4">
-                      <Link to={`/`} className="hover:text-blue-600">
-                        Lorem Ipsum is simply dummy text
+                      <Link href={`/`} className="hover:text-blue-600">
+                        {products.name}
                       </Link>
                       <div className="flex flex-wrap items-center space-x-2 mb-2">
                         <div className="ratings">
@@ -54,23 +54,21 @@ const ListProducts = () => {
                         <span className="ml-1 text-yellow-500">5</span>
                       </div>
                       <p className="text-gray-500 mb-2">
-                        Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry. Lorem Ipsum has been the
-                        industry's standard dummy text ever since the 1500s.
+                        {products.description}
                       </p>
                     </div>
                   </div>
                   <div className="md:w-1/4 border-t lg:border-t-0 lg:border-l border-gray-200">
                     <div className="p-5">
                       <span className="text-xl font-semibold text-black">
-                        $989
+                        #{products.price}
                       </span>
 
                       <p className="text-green-500">Free Shipping</p>
                       <div className="my-3">
                         <a className="px-4 py-2 inline-block text-white bg-blue-600 border border-transparent rounded-md hover:bg-blue-700 cursor-pointer">
-                          {" "}
-                          Add to Cart{" "}
+                          {' '}
+                          Add to Cart{' '}
                         </a>
                       </div>
                     </div>
